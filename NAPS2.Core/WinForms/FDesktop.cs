@@ -143,14 +143,14 @@ namespace NAPS2.WinForms
             {
                 tStrip.Items.Remove(tsdSaveImages);
             }
-            if (appConfigManager.Config.HideEmailButton)
-            {
-                tStrip.Items.Remove(tsdEmailPDF);
-            }
-            if (appConfigManager.Config.HidePrintButton)
-            {
-                tStrip.Items.Remove(tsPrint);
-            }
+            //if (appConfigManager.Config.HideEmailButton)
+            //{
+            //    tStrip.Items.Remove(tsdEmailPDF);
+            //}
+            //if (appConfigManager.Config.HidePrintButton)
+            //{
+            //    tStrip.Items.Remove(tsPrint);
+            //}
 
             LoadToolStripLocation();
             RelayoutToolbar();
@@ -185,11 +185,11 @@ namespace NAPS2.WinForms
                 string localizedResourcesPath =
                     Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? "", langCode,
                         "NAPS2.Core.resources.dll");
-                if (langCode == "en" || File.Exists(localizedResourcesPath))
-                {
-                    var button = new ToolStripMenuItem(langName, null, (sender, args) => SetCulture(langCode));
-                    toolStripDropDownButton1.DropDownItems.Add(button);
-                }
+                //if (langCode == "en" || File.Exists(localizedResourcesPath))
+                //{
+                //    var button = new ToolStripMenuItem(langName, null, (sender, args) => SetCulture(langCode));
+                //    toolStripDropDownButton1.DropDownItems.Add(button);
+                //}
             }
         }
 
@@ -691,20 +691,20 @@ namespace NAPS2.WinForms
         private void UpdateToolbar()
         {
             // "All" dropdown items
-            tsSavePDFAll.Text = tsSaveImagesAll.Text = tsEmailPDFAll.Text = tsReverseAll.Text =
-                string.Format(MiscResources.AllCount, imageList.Images.Count);
-            tsSavePDFAll.Enabled = tsSaveImagesAll.Enabled = tsEmailPDFAll.Enabled = tsReverseAll.Enabled =
-                imageList.Images.Any();
+            //tsSavePDFAll.Text = tsSaveImagesAll.Text = tsEmailPDFAll.Text = tsReverseAll.Text =
+            //    string.Format(MiscResources.AllCount, imageList.Images.Count);
+            //tsSavePDFAll.Enabled = tsSaveImagesAll.Enabled = tsEmailPDFAll.Enabled = tsReverseAll.Enabled =
+            //    imageList.Images.Any();
 
             // "Selected" dropdown items
-            tsSavePDFSelected.Text = tsSaveImagesSelected.Text = tsEmailPDFSelected.Text = tsReverseSelected.Text =
-                string.Format(MiscResources.SelectedCount, SelectedIndices.Count());
-            tsSavePDFSelected.Enabled = tsSaveImagesSelected.Enabled = tsEmailPDFSelected.Enabled = tsReverseSelected.Enabled =
-                SelectedIndices.Any();
+            //tsSavePDFSelected.Text = tsSaveImagesSelected.Text = tsEmailPDFSelected.Text = tsReverseSelected.Text =
+            //    string.Format(MiscResources.SelectedCount, SelectedIndices.Count());
+            //tsSavePDFSelected.Enabled = tsSaveImagesSelected.Enabled = tsEmailPDFSelected.Enabled = tsReverseSelected.Enabled =
+            //    SelectedIndices.Any();
 
             // Top-level toolbar actions
             tsdImage.Enabled = tsdRotate.Enabled = tsMove.Enabled = tsDelete.Enabled = SelectedIndices.Any();
-            tsdReorder.Enabled = tsdSavePDF.Enabled = tsdSaveImages.Enabled = tsdEmailPDF.Enabled = tsPrint.Enabled = tsClear.Enabled = imageList.Images.Any();
+            // tsdReorder.Enabled = tsdSavePDF.Enabled = tsdSaveImages.Enabled = tsPrint.Enabled = tsClear.Enabled = imageList.Images.Any();
 
             // Context-menu actions
             ctxView.Visible = ctxCopy.Visible = ctxDelete.Visible = ctxSeparator1.Visible = ctxSeparator2.Visible = SelectedIndices.Any();
@@ -1035,13 +1035,13 @@ namespace NAPS2.WinForms
             ksm.Assign("Ctrl+B", tsBatchScan);
             ksm.Assign("Ctrl+O", tsImport);
             ksm.Assign("Ctrl+S", tsdSavePDF);
-            ksm.Assign("Ctrl+P", tsPrint);
+            // ksm.Assign("Ctrl+P", tsPrint);
             ksm.Assign("Ctrl+Up", MoveUp);
             ksm.Assign("Ctrl+Left", MoveUp);
             ksm.Assign("Ctrl+Down", MoveDown);
             ksm.Assign("Ctrl+Right", MoveDown);
             ksm.Assign("Ctrl+Shift+Del", tsClear);
-            ksm.Assign("F1", tsAbout);
+            // ksm.Assign("F1", tsAbout);
             ksm.Assign("Ctrl+OemMinus", btnZoomOut);
             ksm.Assign("Ctrl+Oemplus", btnZoomIn);
             ksm.Assign("Del", ctxDelete);
@@ -1053,13 +1053,13 @@ namespace NAPS2.WinForms
 
             var ks = userConfigManager.Config.KeyboardShortcuts ?? appConfigManager.Config.KeyboardShortcuts ?? new KeyboardShortcuts();
 
-            ksm.Assign(ks.About, tsAbout);
+            //ksm.Assign(ks.About, tsAbout);
             ksm.Assign(ks.BatchScan, tsBatchScan);
             ksm.Assign(ks.Clear, tsClear);
             ksm.Assign(ks.Delete, tsDelete);
-            ksm.Assign(ks.EmailPDF, tsdEmailPDF);
-            ksm.Assign(ks.EmailPDFAll, tsEmailPDFAll);
-            ksm.Assign(ks.EmailPDFSelected, tsEmailPDFSelected);
+            //ksm.Assign(ks.EmailPDF, tsdEmailPDF);
+            //ksm.Assign(ks.EmailPDFAll, tsEmailPDFAll);
+            //ksm.Assign(ks.EmailPDFSelected, tsEmailPDFSelected);
             ksm.Assign(ks.ImageBlackWhite, tsBlackWhite);
             ksm.Assign(ks.ImageBrightness, tsBrightnessContrast);
             ksm.Assign(ks.ImageContrast, tsBrightnessContrast);
@@ -1074,7 +1074,7 @@ namespace NAPS2.WinForms
             ksm.Assign(ks.MoveUp, MoveUp); // TODO
             ksm.Assign(ks.NewProfile, tsNewProfile);
             ksm.Assign(ks.Ocr, tsOcr);
-            ksm.Assign(ks.Print, tsPrint);
+            // ksm.Assign(ks.Print, tsPrint);
             ksm.Assign(ks.Profiles, ShowProfilesForm);
 
             ksm.Assign(ks.ReorderAltDeinterleave, tsAltDeinterleave);
@@ -1321,19 +1321,19 @@ namespace NAPS2.WinForms
 
             var action = appConfigManager.Config.SaveButtonDefaultAction;
 
-            if (action == SaveButtonDefaultAction.AlwaysPrompt
-                || action == SaveButtonDefaultAction.PromptIfSelected && SelectedIndices.Any())
-            {
-                tsdEmailPDF.ShowDropDown();
-            }
-            else if (action == SaveButtonDefaultAction.SaveSelected && SelectedIndices.Any())
-            {
-                EmailPDF(SelectedImages.ToList());
-            }
-            else
-            {
-                EmailPDF(imageList.Images);
-            }
+            //if (action == SaveButtonDefaultAction.AlwaysPrompt
+            //    || action == SaveButtonDefaultAction.PromptIfSelected && SelectedIndices.Any())
+            //{
+            //    tsdEmailPDF.ShowDropDown();
+            //}
+            //else if (action == SaveButtonDefaultAction.SaveSelected && SelectedIndices.Any())
+            //{
+            //    EmailPDF(SelectedImages.ToList());
+            //}
+            //else
+            //{
+            //    EmailPDF(imageList.Images);
+            //}
         }
 
         private async void tsPrint_Click(object sender, EventArgs e)
