@@ -1030,6 +1030,7 @@ namespace NAPS2.WinForms
         {
             // Defaults
 
+            // TODO: Hør med Ståle hvilken han mangler
             ksm.Assign("Ctrl+Enter", tsScan);
             ksm.Assign("Ctrl+B", tsBatchScan);
             ksm.Assign("Ctrl+O", tsImport);
